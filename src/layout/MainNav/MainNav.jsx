@@ -19,17 +19,17 @@ const MainNav = () => {
       {connected ? (
         <div>
           <NavLink className="main-nav-item" to="/signin">
-            <i className="fa fa-user-circle"></i>
+            <i className="fa fa-user-circle icon"></i>
             Tony
           </NavLink>
           <NavLink className="main-nav-item" to="/">
-            <i className="fa fa-sign-out"></i>
+            <i className="fa fa-sign-out icon"></i>
             Sign Out
           </NavLink>
         </div>
       ) : (
         <NavLink className="main-nav-item" to="/signin">
-          <i className="fa fa-user-circle"></i>
+          <i className="fa fa-user-circle icon"></i>
           Sign In
         </NavLink>
       )}
