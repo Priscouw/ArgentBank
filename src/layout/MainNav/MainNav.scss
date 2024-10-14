@@ -14,23 +14,24 @@
     color: #42b983;
 }
 
+
 .main-nav-item {
     text-decoration: none;
     margin-right: 0.5rem;
-}
 
-.main-nav-item:hover {
-    text-decoration: underline;
+    &:hover {
+        text-decoration: underline;
+    }
 }
 
 .main-nav-logo {
     display: flex;
     align-items: center;
-}
 
-.main-nav-logo-image {
-    max-width: 100%;
-    width: 200px;
+    &-image {
+        max-width: 100%;
+        width: 200px;
+    }
 }
 
 .icon {
