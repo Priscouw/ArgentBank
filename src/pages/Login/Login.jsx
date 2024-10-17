@@ -2,9 +2,9 @@ import MainNav from "../../layout/MainNav/MainNav";
 import Button from "../../components/Button/Button";
 import Footer from "../../layout/Footer/Footer";
 
-import "../Sign-in/Sign-in.scss";
+import "./Login.scss";
 
-const SignIn = () => {
+export const Login = () => {
   return (
     <>
       <MainNav />
@@ -34,4 +34,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default Login;
