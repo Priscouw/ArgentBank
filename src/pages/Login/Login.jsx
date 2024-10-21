@@ -23,7 +23,7 @@ export const Login = () => {
   const form = useRef(null);
   const dispatch = useDispatch();
 
-  const handleForm = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
 
     if (form.current) {
@@ -79,7 +79,7 @@ export const Login = () => {
         <section className="sign-in-content">
           <i className="fa fa-user-circle sign-in-icon"></i>
           <h1>Sign In</h1>
-          <form ref={form} onSubmit={handleForm}>
+          <form ref={form} onSubmit={handleLogin}>
             <div className="input-wrapper">
               <label htmlFor="username">Username</label>
               <input type="email" id="username" required />
