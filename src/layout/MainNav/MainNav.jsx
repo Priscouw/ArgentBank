@@ -1,9 +1,33 @@
+import { logout } from "../../features/loginSlice";
+import { useDispatch } from "react-redux";
 import "../MainNav/MainNav.scss";
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const MainNav = () => {
-  const [connected, setconnected] = useState(false);
+  const dispatch = useDispatch();
+
+  // Partie token
+  const [tokenSaveLocal, setTokenSaveLocal] = useState(null);
+  const [tokenSaveSession, setTokenSaveSession] = useState(null);
+
+  useEffect(() => {
+    let tokenLocal = localStorage.getItem("tokenlocal");
+    let tokenSession = sessionStorage.getItem("tokensession");
+
+    setTokenSaveLocal(tokenLocal);
+    setTokenSaveSession(tokenSession);
+  }, []);
+
+  const handleLogout = () => {
+    const removetokenSavelocal = () => localStorage.removeItem("tokenlocal");
+    const removetokenSaveSession = () =>
+      sessionStorage.removeItem("tokensession");
+
+    setTokenSaveLocal(removetokenSavelocal);
+    setTokenSaveSession(removetokenSaveSession);
+    dispatch(logout());
+  };
 
   return (
     <nav className="main-nav">
@@ -16,19 +40,19 @@ const MainNav = () => {
       </NavLink>
       <h1 className="sr-only">Argent Bank</h1>
 
-      {connected ? (
+      {tokenSaveLocal || tokenSaveSession ? (
         <div>
-          <NavLink className="main-nav-item" to="/signin">
+          <NavLink className="main-nav-item" to="/user">
             <i className="fa fa-user-circle icon"></i>
             Tony
           </NavLink>
-          <NavLink className="main-nav-item" to="/">
+          <NavLink className="main-nav-item" to="/" onClick={handleLogout}>
             <i className="fa fa-sign-out icon"></i>
             Sign Out
           </NavLink>
         </div>
       ) : (
-        <NavLink className="main-nav-item" to="/signin">
+        <NavLink className="main-nav-item" to="/login">
           <i className="fa fa-user-circle icon"></i>
           Sign In
         </NavLink>
