@@ -1,15 +1,16 @@
 import MainNav from "../../layout/MainNav/MainNav";
 import Button from "../../components/Button/Button";
 import Footer from "../../layout/Footer/Footer";
-
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { login } from "../../features/loginSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { getInfos, postLogin } from "../../api";
 
 import "./Login.scss";
 
 export const Login = () => {
+  const token = useSelector((state) => state.login.token);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [errorMessage, setErrorMessage] = useState(false);
@@ -21,7 +22,6 @@ export const Login = () => {
   };
 
   const form = useRef(null);
-  const dispatch = useDispatch();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -36,42 +36,13 @@ export const Login = () => {
         password,
       };
 
-      fetch("http://localhost:3001/api/v1/user/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(postData),
-      })
-        .then((response) => {
-          if (response.ok) {
-            return response.json();
-          } else {
-            setErrorMessage(!errorMessage);
-            console.log("données non valide");
-          }
-        })
-        .then((data) => {
-          if (data.body.token) {
-            dispatch(login(postData));
-            const token = data.body.token;
-
-            if (isChecked === true) {
-              window.localStorage.setItem("tokenlocal", token);
-              console.log("Je suis connecté au local");
-            } else {
-              window.sessionStorage.setItem("tokensession", token);
-              console.log("je suis connecté à la session");
-            }
-            navigate("/user");
-          }
-        })
-        .catch((error) => {
-          console.error("Erreur lors de la connexion:", error);
-        });
+      postLogin(postData, setErrorMessage, dispatch, navigate);
     }
   };
 
+  if (token) {
+    getInfos(token, dispatch);
+  }
   return (
     <>
       <MainNav />
