@@ -2,17 +2,16 @@ import "../MainNav/MainNav.scss";
 
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
-
 import { useDispatch } from "react-redux";
+
 import { logout } from "../../features/loginSlice";
 import { remove_infos } from "../../features/userSlice";
 
 const MainNav = () => {
   const dispatch = useDispatch();
 
-  // Partie token
   const token = useSelector((state) => state.login.token);
-  const userName = useSelector((state) => state.get_infos);
+  const userName = useSelector((state) => state.user.username);
 
   const handleLogout = () => {
     dispatch(logout());
