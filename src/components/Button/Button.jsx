@@ -15,7 +15,7 @@ const Button = ({ textContain, className, onClick }) => {
 Button.propTypes = {
   textContain: PropTypes.string.isRequired,
   className: PropTypes.string,
-  onClick: PropTypes.bool,
+  onClick: PropTypes.func,
 };
 
 export default Button;
