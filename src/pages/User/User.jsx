@@ -10,6 +10,7 @@ import "../User/User.scss";
 const User = () => {
   const firstname = useSelector((state) => state.user.firstname);
   const lastname = useSelector((state) => state.user.lastname);
+  const username = useSelector((state) => state.user.username);
 
   const [editform, setEditForm] = useState(false);
   const handleEdit = (e) => {
@@ -30,10 +31,10 @@ const User = () => {
           {editform ? (
             <div className="user-info-content">
               <h1>Edit user info</h1>
-              <form className="">
+              <form>
                 <div className="input-wrapper-user">
                   <label htmlFor="user-name">User name:</label>
-                  <input type="text" id="user-name" />
+                  <input type="text" id="user-name" defaultValue={username} />
                 </div>
                 <div className="input-wrapper-user">
                   <label htmlFor="firstname">First name:</label>
@@ -41,6 +42,7 @@ const User = () => {
                     type="text"
                     id="firstname"
                     className="readonly"
+                    value={firstname}
                     readOnly
                   />
                 </div>
@@ -50,6 +52,7 @@ const User = () => {
                     type="text"
                     id="lastname"
                     className="readonly"
+                    value={lastname}
                     readOnly
                   />
                 </div>
