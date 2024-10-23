@@ -23,11 +23,6 @@ const User = () => {
       <MainNav />
       <main className="main bg-dark">
         <div className="header">
-          <h1>
-            Welcome back
-            <br />
-            {firstname + " " + lastname}
-          </h1>
           {editform ? (
             <div className="user-info-content">
               <h1>Edit user info</h1>
@@ -67,11 +62,18 @@ const User = () => {
               </form>
             </div>
           ) : (
-            <Button
-              className="edit-button"
-              textContain="Edit Name"
-              onClick={handleEdit}
-            />
+            <>
+              <h1>
+                Welcome back
+                <br />
+                {firstname + " " + lastname}
+              </h1>
+              <Button
+                className="edit-button"
+                textContain="Edit Name"
+                onClick={handleEdit}
+              />
+            </>
           )}
         </div>
         <h2 className="sr-only">Accounts</h2>
