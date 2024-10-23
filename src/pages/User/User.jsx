@@ -1,4 +1,4 @@
-// import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import Account from "../../components/Account/Account";
 import Button from "../../components/Button/Button";
 import Footer from "../../layout/Footer/Footer";
@@ -7,6 +7,8 @@ import MainNav from "../../layout/MainNav/MainNav";
 import "../User/User.scss";
 
 const User = () => {
+  const firstname = useSelector((state) => state.user.firstname);
+  const lastname = useSelector((state) => state.user.lastname);
   return (
     <div>
       <MainNav />
@@ -15,7 +17,7 @@ const User = () => {
           <h1>
             Welcome back
             <br />
-            Tony Jarvis!
+            {firstname + " " + lastname}
           </h1>
           <Button className="edit-button" textContain="Edit Name" />
           {/* <div className="user-info-content">
@@ -46,8 +48,8 @@ const User = () => {
               <div className="container-buttons">
                 <Button textContain="Save" className="button-large" />
                 <Button textContain="Cancel" className="button-large" />
-              </div> */}
-          {/* </form>
+              </div>
+            </form>
           </div> */}
         </div>
         <h2 className="sr-only">Accounts</h2>
