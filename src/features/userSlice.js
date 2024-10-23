@@ -21,12 +21,15 @@ export const userSlice = createSlice({
             state.firstname = ""
             state.lastname = ""
             state.username = ""
+        },
+        edit_infos: (state, action) => {
+            state.username = action.payload.body.userName;
         }
 
     }
 });
 
 
-export const { get_infos, remove_infos } = userSlice.actions;
+export const { get_infos, remove_infos, edit_infos } = userSlice.actions;
 
 export default userSlice.reducer;
