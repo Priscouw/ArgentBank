@@ -1,32 +1,22 @@
-import { logout } from "../../features/loginSlice";
-import { useDispatch } from "react-redux";
 import "../MainNav/MainNav.scss";
+
 import { NavLink } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+
+import { useDispatch } from "react-redux";
+import { logout } from "../../features/loginSlice";
+import { remove_infos } from "../../features/userSlice";
 
 const MainNav = () => {
   const dispatch = useDispatch();
 
   // Partie token
-  const [tokenSaveLocal, setTokenSaveLocal] = useState(null);
-  const [tokenSaveSession, setTokenSaveSession] = useState(null);
-
-  useEffect(() => {
-    let tokenLocal = localStorage.getItem("tokenlocal");
-    let tokenSession = sessionStorage.getItem("tokensession");
-
-    setTokenSaveLocal(tokenLocal);
-    setTokenSaveSession(tokenSession);
-  }, []);
+  const token = useSelector((state) => state.login.token);
+  const userName = useSelector((state) => state.get_infos);
 
   const handleLogout = () => {
-    const removetokenSavelocal = () => localStorage.removeItem("tokenlocal");
-    const removetokenSaveSession = () =>
-      sessionStorage.removeItem("tokensession");
-
-    setTokenSaveLocal(removetokenSavelocal);
-    setTokenSaveSession(removetokenSaveSession);
     dispatch(logout());
+    dispatch(remove_infos());
   };
 
   return (
@@ -40,11 +30,11 @@ const MainNav = () => {
       </NavLink>
       <h1 className="sr-only">Argent Bank</h1>
 
-      {tokenSaveLocal || tokenSaveSession ? (
+      {token ? (
         <div>
           <NavLink className="main-nav-item" to="/user">
             <i className="fa fa-user-circle icon"></i>
-            Tony
+            {userName}
           </NavLink>
           <NavLink className="main-nav-item" to="/" onClick={handleLogout}>
             <i className="fa fa-sign-out icon"></i>
