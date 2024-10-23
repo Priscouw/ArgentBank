@@ -15,12 +15,6 @@ export const Login = () => {
 
   const [errorMessage, setErrorMessage] = useState(false);
 
-  // usestate pour case à cocher
-  const [isChecked, setIsChecked] = useState(false);
-  const checkHandler = () => {
-    setIsChecked(!isChecked);
-  };
-
   const form = useRef(null);
 
   const handleLogin = (e) => {
@@ -65,12 +59,7 @@ export const Login = () => {
               </p>
             )}
             <div className="input-remember">
-              <input
-                type="checkbox"
-                id="remember-me"
-                checked={isChecked}
-                onChange={checkHandler}
-              />
+              <input type="checkbox" id="remember-me" />
               <label htmlFor="remember-me">Remember me</label>
             </div>
             <Button textContain="Sign In" className="sign-in-button" />
