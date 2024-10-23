@@ -4,10 +4,6 @@
     margin-top: 1rem;
 }
 
-.input-wrapper.user {
-    display: flex;
-}
-
 .container-buttons {
     display: flex;
     gap: 0.5rem;
@@ -16,12 +12,17 @@
 .user-info-content {
     box-sizing: border-box;
     background-color: white;
-    color: #222;
+    color: #2c3e50;
     width: 300px;
     margin: 0 auto;
     margin-top: 3rem;
-    margin-bottom: 5rem;
-    padding: 2rem;
+    padding: 1rem 2rem 2rem;
+
+    & h1 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+
 }
 
 .input-wrapper-user {
@@ -30,8 +31,8 @@
     text-align: left;
     margin-bottom: 1rem;
     gap: 0.6rem;
-}
 
+}
 
 .input-wrapper-user label {
     font-weight: bold;
@@ -39,11 +40,12 @@
 }
 
 .input-wrapper-user input {
+    border: #2c3e50 1px solid;
     font-size: 0.9rem;
-    padding: 0.2rem 0;
+    padding: 0.2rem;
     width: 60%;
 }
 
 .readonly {
-    background-color: rgb(204, 200, 200);
+    background-color: rgb(228, 222, 222);
 }
