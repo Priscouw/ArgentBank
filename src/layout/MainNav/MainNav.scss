@@ -3,11 +3,17 @@
     justify-content: space-between;
     align-items: center;
     padding: 5px 20px;
+
 }
 
 .main-nav a {
     font-weight: bold;
     color: #2c3e50;
+    font-size: 0.8rem;
+
+    @media (min-width: 425px) {
+        font-size: 1rem;
+    }
 }
 
 .main-nav a.router-link-exact-active {
@@ -28,9 +34,20 @@
     display: flex;
     align-items: center;
 
+
     &-image {
         max-width: 100%;
-        width: 200px;
+        width: 120px;
+
+        @media (min-width: 375px) {
+            width: 150px;
+
+        }
+
+        @media (min-width: 425px) {
+            width: 200px;
+
+        }
     }
 }
 
