@@ -57,7 +57,7 @@ export const editUsername = (value, token, dispatch) => {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(value),
+        body: JSON.stringify({ userName: value }),
     })
         .then((response) => {
             if (response.ok) {
