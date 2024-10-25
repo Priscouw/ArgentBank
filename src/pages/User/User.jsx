@@ -1,21 +1,39 @@
-import { useSelector } from "react-redux";
-import { useState } from "react";
 import Account from "../../components/Account/Account";
 import Button from "../../components/Button/Button";
 import Footer from "../../layout/Footer/Footer";
 import MainNav from "../../layout/MainNav/MainNav";
 
+import { useDispatch, useSelector } from "react-redux";
+import { useRef, useState } from "react";
+
+import { editUsername } from "../../api";
+
 import "../User/User.scss";
 
 const User = () => {
+  // Récupération des infos via le store redux
   const firstname = useSelector((state) => state.user.firstname);
   const lastname = useSelector((state) => state.user.lastname);
   const username = useSelector((state) => state.user.username);
+  const token = useSelector((state) => state.login.token);
 
   const [editform, setEditForm] = useState(false);
-  const handleEdit = (e) => {
+  const usernameRef = useRef(username);
+
+  const dispatch = useDispatch();
+
+  // Bouton Cancel
+  const handleCancel = (e) => {
     e.preventDefault();
     setEditForm(!editform);
+  };
+
+  // Bouton Save
+  const handleEditUsername = (e) => {
+    const newUsername = usernameRef.current.value;
+    e.preventDefault();
+    editUsername(newUsername, token, dispatch);
+    setEditForm(false);
   };
 
   return (
@@ -26,10 +44,15 @@ const User = () => {
           {editform ? (
             <div className="user-info-content">
               <h1>Edit user info</h1>
-              <form>
+              <form onSubmit={handleEditUsername}>
                 <div className="input-wrapper-user">
-                  <label htmlFor="user-name">User name:</label>
-                  <input type="text" id="user-name" defaultValue={username} />
+                  <label htmlFor="username">User name:</label>
+                  <input
+                    type="text"
+                    id="username"
+                    defaultValue={username}
+                    ref={usernameRef}
+                  />
                 </div>
                 <div className="input-wrapper-user">
                   <label htmlFor="firstname">First name:</label>
@@ -56,7 +79,7 @@ const User = () => {
                   <Button
                     textContain="Cancel"
                     className="button-large"
-                    onClick={handleEdit}
+                    onClick={handleCancel}
                   />
                 </div>
               </form>
@@ -71,7 +94,7 @@ const User = () => {
               <Button
                 className="edit-button"
                 textContain="Edit Name"
-                onClick={handleEdit}
+                onClick={handleCancel}
               />
             </>
           )}
