@@ -1,9 +1,11 @@
 import MainNav from "../../layout/MainNav/MainNav";
 import Button from "../../components/Button/Button";
 import Footer from "../../layout/Footer/Footer";
+
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+
 import { getInfos, postLogin } from "../../api";
 
 import "./Login.scss";
@@ -22,7 +24,7 @@ export const Login = () => {
 
     if (form.current) {
       // Utilisation de form.current.elements pour accéder aux champs
-      const email = form.current.elements.username.value;
+      const email = form.current.elements.email.value;
       const password = form.current.elements.password.value;
 
       const postData = {
@@ -46,8 +48,8 @@ export const Login = () => {
           <h1>Sign In</h1>
           <form ref={form} onSubmit={handleLogin}>
             <div className="input-wrapper">
-              <label htmlFor="username">Username</label>
-              <input type="email" id="username" required />
+              <label htmlFor="email">Username</label>
+              <input type="email" id="email" required />
             </div>
             <div className="input-wrapper">
               <label htmlFor="password">Password</label>
