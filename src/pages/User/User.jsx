@@ -2,9 +2,10 @@ import Account from "../../components/Account/Account";
 import Button from "../../components/Button/Button";
 import Footer from "../../layout/Footer/Footer";
 import MainNav from "../../layout/MainNav/MainNav";
+import { useNavigate } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { editUsername } from "../../api";
 
@@ -19,6 +20,14 @@ const User = () => {
 
   const [editform, setEditForm] = useState(false);
   const usernameRef = useRef(username);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/login");
+    }
+  }, [navigate, token]);
 
   const dispatch = useDispatch();
 
