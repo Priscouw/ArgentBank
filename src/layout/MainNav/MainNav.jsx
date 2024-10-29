@@ -1,4 +1,4 @@
-import "../MainNav/MainNav.scss";
+import "./MainNav.scss";
 
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";

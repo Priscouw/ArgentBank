@@ -1,4 +1,4 @@
-import "../Home/Home.scss";
+import "./Home.scss";
 import FeatureItem from "../../components/FeatureItem/FeatureItem";
 import Footer from "../../layout/Footer/Footer";
 import MainNav from "../../layout/MainNav/MainNav";

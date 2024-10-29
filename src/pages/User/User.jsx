@@ -8,7 +8,7 @@ import { useRef, useState } from "react";
 
 import { editUsername } from "../../api";
 
-import "../User/User.scss";
+import "./User.scss";
 
 const User = () => {
   // Récupération des infos via le store redux
