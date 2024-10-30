@@ -1,11 +1,13 @@
-import "./MainNav.scss";
+import "../MainNav/MainNav.scss";
 
+import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import { logout } from "../../features/loginSlice";
 import { remove_infos } from "../../features/userSlice";
+
+import { getInfos } from "../../api";
 
 const MainNav = () => {
   const dispatch = useDispatch();
@@ -17,6 +19,12 @@ const MainNav = () => {
     dispatch(logout());
     dispatch(remove_infos());
   };
+
+  useEffect(() => {
+    if (token && !userName) {
+      getInfos(token, dispatch);
+    }
+  }, [token, userName, dispatch]);
 
   return (
     <nav className="main-nav">
