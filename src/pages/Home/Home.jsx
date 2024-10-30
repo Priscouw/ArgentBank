@@ -1,12 +1,9 @@
 import "./Home.scss";
 import FeatureItem from "../../components/FeatureItem/FeatureItem";
-import Footer from "../../layout/Footer/Footer";
-import MainNav from "../../layout/MainNav/MainNav";
 
 const Home = () => {
   return (
     <>
-      <MainNav />
       <main>
         <div className="hero">
           <section className="hero-content">
@@ -23,7 +20,6 @@ const Home = () => {
           <FeatureItem />
         </section>
       </main>
-      <Footer />
     </>
   );
 };

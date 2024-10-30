@@ -1,6 +1,4 @@
-import MainNav from "../../layout/MainNav/MainNav";
 import Button from "../../components/Button/Button";
-import Footer from "../../layout/Footer/Footer";
 
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -37,7 +35,6 @@ export const Login = () => {
 
   return (
     <>
-      <MainNav />
       <main className="main bg-dark">
         <section className="sign-in-content">
           <i className="fa fa-user-circle sign-in-icon"></i>
@@ -64,7 +61,6 @@ export const Login = () => {
           </form>
         </section>
       </main>
-      <Footer />
     </>
   );
 };

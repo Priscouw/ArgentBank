@@ -1,7 +1,6 @@
 import Account from "../../components/Account/Account";
 import Button from "../../components/Button/Button";
-import Footer from "../../layout/Footer/Footer";
-import MainNav from "../../layout/MainNav/MainNav";
+
 import { useNavigate } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -46,8 +45,7 @@ const User = () => {
   };
 
   return (
-    <div>
-      <MainNav />
+    <>
       <main className="main bg-dark">
         <div className="header">
           {editform ? (
@@ -111,8 +109,7 @@ const User = () => {
         <h2 className="sr-only">Accounts</h2>
         <Account />
       </main>
-      <Footer />
-    </div>
+    </>
   );
 };
 
