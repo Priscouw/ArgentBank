@@ -4,14 +4,13 @@ import Footer from "../../layout/Footer/Footer";
 
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
-import { getInfos, postLogin } from "../../api";
+import { postLogin } from "../../api";
 
 import "./Login.scss";
 
 export const Login = () => {
-  const token = useSelector((state) => state.login.token);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -36,9 +35,6 @@ export const Login = () => {
     }
   };
 
-  if (token) {
-    getInfos(token, dispatch);
-  }
   return (
     <>
       <MainNav />
